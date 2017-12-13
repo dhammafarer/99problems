@@ -36,3 +36,14 @@ myFlatten :: NestedList a -> [a]
 myFlatten (Elem x) = [x]
 myFlatten (List xs) = foldr ((++) . myFlatten) [] xs
 ---------------
+
+compress :: Eq a => [a] -> [a]
+compress = foldr f []
+  where
+    f a [] = [a]
+    f a b = if a == head b then b else a : b
+
+compress' (x:ys@(y:_))
+  | x == y = compress ys
+  | otherwise = x : compress ys
+compress' ys = ys
