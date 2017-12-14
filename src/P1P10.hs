@@ -1,4 +1,4 @@
-module Lists1 where
+module P1P10 where
 
 import Control.Arrow ((&&&))
 

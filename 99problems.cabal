@@ -19,3 +19,22 @@ executable 99problems
   default-language:    Haskell2010
   build-depends:       base >= 4.7 && < 5
                      , criterion
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     P11P20
+                     , P21P28
+  build-depends:       base >= 4.7 && < 5
+                     , random
+  default-language:    Haskell2010
+
+benchmark bench-99problems
+  type:             exitcode-stdio-1.0
+  hs-source-dirs:   bench
+  main-is:          BenchAll.hs
+  build-depends:    base, deepseq, ghc-prim,
+                    criterion, 99problems
+  ghc-options:      -O2
+                    -fmax-simplifier-iterations=10
+                    -fdicts-cheap
+                    -fspec-constr-count=6
